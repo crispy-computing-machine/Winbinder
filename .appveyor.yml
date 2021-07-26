@@ -17,7 +17,7 @@ environment:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       PHP_BUILD_CRT: vc15
       PHP_REL: 7.4
-      ARCHITECTURES: x86
+      ARCHITECTURES: x86 x64
       ZTS_STATES: enable
 
 install:
