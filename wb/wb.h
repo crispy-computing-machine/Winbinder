@@ -319,8 +319,8 @@ enum
 
 typedef struct
 { // ar
-	LONG width;
-	LONG height;
+	LONG_PTR width;
+	LONG_PTR height;
 } AREA;
 
 // WinBinder object (window, control, or menu), stored with SetWindowLongPtr() / GWLP_USERDATA
@@ -337,7 +337,7 @@ typedef struct _wbo
 	LPTSTR pszCallBackFn;   // Callback function
 	LPDWORD pszCallBackObj; // Object for callback method
 	LPARAM lparam;			// User-defined parameter
-	LONG lparams[8];		// General-purpose parameter array
+	LONG_PTR lparams[8];		// General-purpose parameter array
 	RECT rcTitle;			// Title area
 	AREA arMin;				// Minimum window area
 	AREA arMax;				// Maximum window area
@@ -461,7 +461,7 @@ PWBOBJ wbGetFocus(void);
 BOOL wbSetFocus(PWBOBJ pwbo);
 DWORD wbGetValue(PWBOBJ pwbo);
 BOOL wbSetValue(PWBOBJ pwbo, DWORD dwValue);
-BOOL wbSetRange(PWBOBJ pwbo, LONG dwMin, LONG dwMax);
+BOOL wbSetRange(PWBOBJ pwbo, LONG_PTR dwMin, LONG_PTR dwMax);
 BOOL wbGetVisible(PWBOBJ pwbo);
 BOOL wbSetVisible(PWBOBJ pwbo, BOOL bState);
 BOOL wbSetStyle(PWBOBJ pwbo, DWORD dwWBStyle, BOOL bSet);
@@ -615,7 +615,7 @@ BOOL wbExec(LPCTSTR pszPgm, LPCTSTR pszParm, BOOL bShowWindow);
 BOOL wbFindFile(LPTSTR pszFileName, UINT uLen);
 BOOL wbReadRegistryKey(LPCTSTR pszKey, LPTSTR pszSubKey, LPTSTR pszEntry, LPTSTR pszValue, int *pnBufLen);
 BOOL wbWriteRegistryKey(LPCTSTR pszKey, LPTSTR pszSubKey, LPTSTR pszEntry, LPCTSTR pszValue, DWORD dwValue, BOOL bString);
-LONG wbGetSystemInfo(LPCTSTR pszInfo, BOOL *pbString, LPTSTR pszString, UINT uLen);
+LONG_PTR wbGetSystemInfo(LPCTSTR pszInfo, BOOL *pbString, LPTSTR pszString, UINT uLen);
 BOOL wbSetAccelerators(PWBOBJ pwbo, LPACCEL paccels, int nCount);
 DWORD wbMakeAccelFromString(const char *pszAccel);
 UINT wbCheckInput(PWBOBJ pwbo, DWORD dwFlags, DWORD dwTimeout);

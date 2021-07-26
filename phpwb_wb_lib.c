@@ -112,7 +112,7 @@ UINT wbCallUserFunction(LPCTSTR pszFunctionName, LPDWORD pszObject, PWBOBJ pwboP
 			wbError(TEXT("wbCallUserFunction"), MB_ICONWARNING, TEXT("No callback function assigned to window '%s'"), title);
 		}
 		else
-			wbError(TEXT("wbCallUserFunction"), MB_ICONWARNING, TEXT("No callback function assigned to window #%ld"), (LONG)pwboParent);
+			wbError(TEXT("wbCallUserFunction"), MB_ICONWARNING, TEXT("No callback function assigned to window #%ld"), (LONG_PTR)pwboParent);
 		return FALSE;
 	}
 
@@ -134,22 +134,22 @@ UINT wbCallUserFunction(LPCTSTR pszFunctionName, LPDWORD pszObject, PWBOBJ pwboP
 	//}
 
 	// PWBOBJ pointer
-	ZVAL_LONG(&parms[0], (LONG)pwboParent);
+	ZVAL_LONG(&parms[0], (LONG_PTR)pwboParent);
 
 	// id
-	ZVAL_LONG(&parms[1], (LONG)id);
+	ZVAL_LONG(&parms[1], (LONG_PTR)id);
 
 	// control handle
-	ZVAL_LONG(&parms[2], (LONG)pctrl);
+	ZVAL_LONG(&parms[2], (LONG_PTR)pctrl);
 
 	// lparam1
-	ZVAL_LONG(&parms[3], (LONG)lParam1);
+	ZVAL_LONG(&parms[3], (LONG_PTR)lParam1);
 
 	// lparam2
-	ZVAL_LONG(&parms[4], (LONG)lParam2);
+	ZVAL_LONG(&parms[4], (LONG_PTR)lParam2);
 
 	// lparam3
-	ZVAL_LONG(&parms[5], (LONG)lParam3);
+	ZVAL_LONG(&parms[5], (LONG_PTR)lParam3);
 
 	// Call the user function
 	bRet = call_user_function_ex(

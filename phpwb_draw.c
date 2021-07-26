@@ -142,7 +142,7 @@ ZEND_FUNCTION(wb_draw_image)
 							  "ll|lllllll", &handle, &hbm, &x, &y, &w, &h, &transpcolor, &cx, &cy) == FAILURE)
 		return;
 
-	RETURN_BOOL((LONG)wbDrawBitmap((HANDLE)handle, (HBITMAP)hbm, x, y, w, h, cx, cy, transpcolor))
+	RETURN_BOOL((LONG_PTR)wbDrawBitmap((HANDLE)handle, (HBITMAP)hbm, x, y, w, h, cx, cy, transpcolor))
 }
 
 //------------------------------------------------------------------ END OF FILE

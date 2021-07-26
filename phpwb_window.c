@@ -62,7 +62,7 @@ ZEND_FUNCTION(wb_create_window)
 		break;
 	}
 
-	pwbo = (LONG)wbCreateWindow((PWBOBJ)pwboparent, wbclass, wcsCaption, wcsTooltip, x, y, w, h, 0, style, lparam);
+	pwbo = (LONG_PTR)wbCreateWindow((PWBOBJ)pwboparent, wbclass, wcsCaption, wcsTooltip, x, y, w, h, 0, style, lparam);
 
 	if (!pwbo)
 	{
@@ -440,7 +440,7 @@ ZEND_FUNCTION(wb_get_item_list)
 		plist = emalloc(nctrls * sizeof(PWBOBJ));
 		wbGetControlList((PWBOBJ)pwboparent, plist, nctrls);
 		for (i = 0; i < nctrls; i++)
-			add_next_index_long(return_value, (LONG)plist[i]);
+			add_next_index_long(return_value, (LONG_PTR)plist[i]);
 		efree(plist);
 	}
 }

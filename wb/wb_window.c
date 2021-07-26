@@ -129,7 +129,7 @@ PWBOBJ wbCreateWindow(PWBOBJ pwboParent, UINT uWinBinderClass, LPCTSTR pszCaptio
 	pwbo->pszCallBackFn = NULL;
 	pwbo->pszCallBackObj = NULL;
 	pwbo->lparam = lParam;
-	ZeroMemory(pwbo->lparams, sizeof(LONG) * 8);
+	ZeroMemory(pwbo->lparams, sizeof(LONG_PTR) * 8);
 	ZeroMemory(&pwbo->rcTitle, sizeof(RECT) + 2 * sizeof(AREA));
 	pwbo->pbuffer = NULL;
 
@@ -219,7 +219,7 @@ PWBOBJ wbCreateWindow(PWBOBJ pwboParent, UINT uWinBinderClass, LPCTSTR pszCaptio
 
 	CreateToolTip(pwbo, pszTooltip);
 
-	SetWindowLongPtr(pwbo->hwnd, GWLP_USERDATA, (LONG)pwbo);
+	SetWindowLongPtr(pwbo->hwnd, GWLP_USERDATA, (LONG_PTR)pwbo);
 
 	// Is it a modal dialog?
 
@@ -1739,7 +1739,7 @@ static LRESULT CALLBACK OwnerDrawnWndProc(HWND hwnd, UINT msg, WPARAM wParam, LP
 			prcOld = wbMalloc(sizeof(RECT));
 			SetRect(prcOld, 0, 0, 0, 0);
 			// Store previous buffer size in the window parameters
-			pwbobj->lparams[1] = (LONG)prcOld;
+			pwbobj->lparams[1] = (LONG_PTR)prcOld;
 		}
 		else
 			prcOld = (LPRECT)pwbobj->lparams[1];
@@ -2173,7 +2173,7 @@ static int CALLBACK CompareLVItemsDescending(LPARAM lParam1, LPARAM lParam2, LPA
 static DWORD CenterWindow(HWND hwndMovable, HWND hwndFixed)
 {
 	RECT rcMovable, rcFixed;
-	LONG xPos, yPos;
+	LONG_PTR xPos, yPos;
 
 	// Get window size
 
