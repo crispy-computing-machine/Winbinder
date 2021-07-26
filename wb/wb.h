@@ -568,7 +568,7 @@ PFONT wbGetFont(int nFont);
 // WB_GENERIC.C
 
 BOOL wbIsWBObj(void *pwbo, BOOL bShowErrors);
-PWBOBJ wbGetWBObj(HANDLE hwnd);
+LONG_PTR wbGetWBObj(HANDLE hwnd);
 BOOL wbConvertLineBreaks(TCHAR **ppszTarget, const TCHAR *pszSource);
 LPTSTR wbStriStr(LPCTSTR pszString, LPCTSTR pszPattern);
 
