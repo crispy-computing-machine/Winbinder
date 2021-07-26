@@ -615,7 +615,7 @@ BOOL wbExec(LPCTSTR pszPgm, LPCTSTR pszParm, BOOL bShowWindow);
 BOOL wbFindFile(LPTSTR pszFileName, UINT uLen);
 BOOL wbReadRegistryKey(LPCTSTR pszKey, LPTSTR pszSubKey, LPTSTR pszEntry, LPTSTR pszValue, int *pnBufLen);
 BOOL wbWriteRegistryKey(LPCTSTR pszKey, LPTSTR pszSubKey, LPTSTR pszEntry, LPCTSTR pszValue, DWORD dwValue, BOOL bString);
-LONG_PTR wbGetSystemInfo(LPCTSTR pszInfo, BOOL *pbString, LPTSTR pszString, UINT uLen);
+LONG wbGetSystemInfo(LPCTSTR pszInfo, BOOL *pbString, LPTSTR pszString, UINT uLen);
 BOOL wbSetAccelerators(PWBOBJ pwbo, LPACCEL paccels, int nCount);
 DWORD wbMakeAccelFromString(const char *pszAccel);
 UINT wbCheckInput(PWBOBJ pwbo, DWORD dwFlags, DWORD dwTimeout);
