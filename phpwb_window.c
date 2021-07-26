@@ -17,7 +17,7 @@
 
 ZEND_FUNCTION(wb_create_window)
 {
-	zend_long pwboparent, pwbo;
+	LONG_PTR pwboparent, pwbo;
 	zend_long wbclass, x = WBC_CENTER, y = WBC_CENTER, w = CW_USEDEFAULT, h = CW_USEDEFAULT, style = 0, lparam = 0;
 	int nargs;
 	zval *zcaption;
@@ -440,7 +440,7 @@ ZEND_FUNCTION(wb_get_item_list)
 		plist = emalloc(nctrls * sizeof(PWBOBJ));
 		wbGetControlList((PWBOBJ)pwboparent, plist, nctrls);
 		for (i = 0; i < nctrls; i++)
-			add_next_index_long(return_value, (LONG_PTR)plist[i]);
+			add_next_index_long(return_value, (LONG)plist[i]);
 		efree(plist);
 	}
 }

@@ -22,7 +22,7 @@ ZEND_FUNCTION(wbtemp_create_menu)
 	HashTable *target_hash;
 	zend_long pwboParent;
 	PWBITEM *pitem = NULL;
-	LONG_PTR l;
+	LONG l;
 	char *str_accel = NULL;
 	ACCEL accel[MAX_ACCELS];
 	DWORD dwacc;
@@ -115,7 +115,7 @@ ZEND_FUNCTION(wbtemp_create_menu)
 
 	// Create menu and attach it to window
 
-	l = (LONG_PTR)wbCreateMenu((PWBOBJ)pwboParent, pitem, nelem);
+	l = (LONG)wbCreateMenu((PWBOBJ)pwboParent, pitem, nelem);
 
 	if (pitem)
 		efree(pitem);

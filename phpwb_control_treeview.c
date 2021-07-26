@@ -155,7 +155,7 @@ ZEND_FUNCTION(wbtemp_create_treeview_item)
 	BOOL setlparam = FALSE;
 
 	TCHAR *wcs = 0;
-	LONG_PTR ret;
+	LONG ret;
 
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
 							  "ls|zllll", &pwbo, &str, &str_len, &zparam, &where, &img1, &img2, &insertiontype) == FAILURE)
@@ -183,13 +183,13 @@ ZEND_FUNCTION(wbtemp_create_treeview_item)
 	{
 	case 0: // 'where' is the level of insertion
 	default:
-		ret = (LONG_PTR)wbAddTreeViewItemLevel((PWBOBJ)pwbo, where, wcs, lparam, setlparam, img1, img2);
+		ret = (LONG)wbAddTreeViewItemLevel((PWBOBJ)pwbo, where, wcs, lparam, setlparam, img1, img2);
 		break;
 	case 1: // 'where' is the sibling of the new node
-		ret = (LONG_PTR)wbAddTreeViewItemSibling((PWBOBJ)pwbo, (HTREEITEM)where, wcs, lparam, setlparam, img1, img2);
+		ret = (LONG)wbAddTreeViewItemSibling((PWBOBJ)pwbo, (HTREEITEM)where, wcs, lparam, setlparam, img1, img2);
 		break;
 	case 2: // 'where' is the parent of the new node
-		ret = (LONG_PTR)wbAddTreeViewItemChild((PWBOBJ)pwbo, (HTREEITEM)where, wcs, lparam, setlparam, img1, img2);
+		ret = (LONG)wbAddTreeViewItemChild((PWBOBJ)pwbo, (HTREEITEM)where, wcs, lparam, setlparam, img1, img2);
 		break;
 	}
 	RETURN_LONG(ret);

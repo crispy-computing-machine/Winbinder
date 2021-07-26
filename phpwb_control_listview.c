@@ -72,7 +72,7 @@ ZEND_FUNCTION(wbtemp_create_listview_item)
 	if(!wbIsWBObj((void *)pwbo, TRUE))
 		RETURN_NULL()
 
-	RETURN_LONG((LONG_PTR)wbCreateListViewImages((PWBOBJ)pwbo, (HBITMAP)hbm, n, color));
+	RETURN_LONG((LONG)wbCreateListViewImages((PWBOBJ)pwbo, (HBITMAP)hbm, n, color));
 }*/
 
 ZEND_FUNCTION(wbtemp_set_listview_item_text)
