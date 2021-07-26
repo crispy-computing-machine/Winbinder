@@ -14,10 +14,11 @@ Containers
 Parent
 WinBinder
 WinBinder,Objects
-SetWindowLong (Windows API function)-->
+SetWindowLongPtr (Windows API function)-->
 <h2>WinBinder objects</h2>
 <p>Windows uses handles of type HWND to refer to most GUI objects. Since handles are 32-bit
-pointers that are unique to each window, it would be tempting to use them asPHP 
+pointers that are unique to each window, it would be tempting to use them as
+PHP 
 variables to refer to controls. However, this approach is not ideal for
 the following reasons:</p>
 <ul>
@@ -34,7 +35,7 @@ WB.H:</p>
 <table border="0" bgcolor="#E0E0E0" cellpadding="5" >
 <tr><td>
             <p><code>// WinBinder object (window, control, or menu), stored 
-            with SetWindowLong() / GWL_USERDATA</code></p>
+            with SetWindowLongPtr() / GWL_USERDATA</code></p>
             <p><code>typedef struct _wbo {<br>&nbsp;&nbsp;&nbsp;&nbsp;HWND hwnd;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
             Control or window handle<br>&nbsp;&nbsp;&nbsp;&nbsp;UINT id;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
             Control identifier<br>&nbsp;&nbsp;&nbsp;&nbsp;UINT uClass;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
@@ -62,7 +63,7 @@ WB.H:</p>
 and <a href="../functions/wb_create_window.html"><b>wb_create_window()</b></a> 
 effectively return a pointer to the window's WBOBJ structure
 as a long integer. This pointer is also stored
-(with Window API function <b>SetWindowLong()</b> and GWL_USERDATA) in every window. 
+(with Window API function <b>SetWindowLongPtr()</b> and GWL_USERDATA) in every window.
 Therefore it always possible to obtain the HWND from a WBOBJ and vice-versa, 
 for any given window or control.</p>
 <p>The first LPARAM type
@@ -88,7 +89,8 @@ and&nbsp;</b><a href="../classes/tabcontrol.html"><b>tab controls</b></a>. There
 the following rule must be observed:</p>
 <table border="0" bgcolor="#E0E0E0" cellpadding="5" >
 <tr><td bgcolor="#FFFFCC">
-<p><b><img src="../images/icon_warning.gif" align="absmiddle" width="32" height="32" border="0">WARNING: 
+<p><b><img src="../images/icon_warning.gif" align="absmiddle" width="32" height="32" border="0">
+WARNING: 
 You should not try to use a&nbsp;</b><a href="../classes/frame.html"><b>frame</b></a><b> 
             (or any other control class except for a tab control) as a container 
             for other controls.</b></p>

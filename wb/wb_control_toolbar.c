@@ -65,7 +65,7 @@ PWBOBJ wbCreateToolbar(PWBOBJ pwboParent, PWBITEM pitem[], int nItems, int nBtnW
 			CreateToolbarButton(hToolbar, pitem[i]->id, pitem[i]->index, pitem[i]->pszHint);
 	}
 
-	SetWindowLong(pwbo->hwnd, GWL_USERDATA, (LONG)pwbo);
+	SetWindowLongPtr(pwbo->hwnd, GWL_USERDATA, (LONG)pwbo);
 
 	return pwbo;
 }

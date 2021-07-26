@@ -238,7 +238,7 @@ BOOL RegisterControlInTab(PWBOBJ pwboParent, PWBOBJ pwbo, UINT id, UINT nTab)
 	if (pwboParent == pwbo)
 		return FALSE;
 
-	pwboTab = (PWBOBJ)GetWindowLong(pwboParent->hwnd, GWL_USERDATA);
+	pwboTab = (PWBOBJ)GetWindowLongPtr(pwboParent->hwnd, GWL_USERDATA);
 	if (!pwboTab)
 		return FALSE;
 

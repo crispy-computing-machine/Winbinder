@@ -219,7 +219,7 @@ PWBOBJ wbCreateWindow(PWBOBJ pwboParent, UINT uWinBinderClass, LPCTSTR pszCaptio
 
 	CreateToolTip(pwbo, pszTooltip);
 
-	SetWindowLong(pwbo->hwnd, GWL_USERDATA, (LONG)pwbo);
+	SetWindowLongPtr(pwbo->hwnd, GWL_USERDATA, (LONG)pwbo);
 
 	// Is it a modal dialog?
 

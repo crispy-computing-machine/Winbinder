@@ -323,7 +323,7 @@ typedef struct
 	LONG height;
 } AREA;
 
-// WinBinder object (window, control, or menu), stored with SetWindowLong() / GWL_USERDATA
+// WinBinder object (window, control, or menu), stored with SetWindowLongPtr() / GWL_USERDATA
 
 typedef struct _wbo
 {							// wbo
