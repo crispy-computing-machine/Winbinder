@@ -76,10 +76,10 @@ BOOL wbIsWBObj(void *pwbo, BOOL bShowErrors)
 	return FALSE;
 }
 
-PWBOBJ wbGetWBObj(HANDLE hwnd)
+LONG_PTR wbGetWBObj(HANDLE hwnd)
 {
 	if (IsWindow(hwnd))
-		return (PWBOBJ)GetWindowLongPtr((HWND)hwnd, GWLP_USERDATA);
+		return (LONG_PTR)GetWindowLongPtr((HWND)hwnd, GWLP_USERDATA);
 	else
 		return NULL;
 }
