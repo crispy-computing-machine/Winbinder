@@ -35,7 +35,7 @@ WB.H:</p>
 <table border="0" bgcolor="#E0E0E0" cellpadding="5" >
 <tr><td>
             <p><code>// WinBinder object (window, control, or menu), stored 
-            with SetWindowLongPtr() / GWPL_USERDATA</code></p>
+            with SetWindowLongPtr() / GWLP_USERDATA</code></p>
             <p><code>typedef struct _wbo {<br>&nbsp;&nbsp;&nbsp;&nbsp;HWND hwnd;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
             Control or window handle<br>&nbsp;&nbsp;&nbsp;&nbsp;UINT id;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
             Control identifier<br>&nbsp;&nbsp;&nbsp;&nbsp;UINT uClass;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
@@ -63,7 +63,7 @@ WB.H:</p>
 and <a href="../functions/wb_create_window.html"><b>wb_create_window()</b></a> 
 effectively return a pointer to the window's WBOBJ structure
 as a long integer. This pointer is also stored
-(with Window API function <b>SetWindowLongPtr()</b> and GWPL_USERDATA) in every window.
+(with Window API function <b>SetWindowLongPtr()</b> and GWLP_USERDATA) in every window.
 Therefore it always possible to obtain the HWND from a WBOBJ and vice-versa, 
 for any given window or control.</p>
 <p>The first LPARAM type

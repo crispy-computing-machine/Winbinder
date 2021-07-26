@@ -561,7 +561,7 @@ PWBOBJ wbCreateControl(PWBOBJ pwboParent, UINT uWinBinderClass, LPCTSTR pszSourc
 	if (pwboParent->uClass == TabControl)
 		RegisterControlInTab(pwboParent, pwbo, id, nTab);
 
-	SetWindowLongPtr(pwbo->hwnd, GWPL_USERDATA, (LONG)pwbo);
+	SetWindowLongPtr(pwbo->hwnd, GWLP_USERDATA, (LONG)pwbo);
 
 	return pwbo;
 }
@@ -664,7 +664,7 @@ PWBOBJ wbGetControl(PWBOBJ pwboParent, int id)
 
 				if (IsWindow(hCtrl))
 				{
-					pwbo = (PWBOBJ)GetWindowLongPtr(hCtrl, GWPL_USERDATA);
+					pwbo = (PWBOBJ)GetWindowLongPtr(hCtrl, GWLP_USERDATA);
 				}
 				else
 				{
@@ -706,7 +706,7 @@ PWBOBJ wbGetControl(PWBOBJ pwboParent, int id)
 
 							if (IsWindow(hCtrl))
 							{
-								pwbo = (PWBOBJ)GetWindowLongPtr(hCtrl, GWPL_USERDATA);
+								pwbo = (PWBOBJ)GetWindowLongPtr(hCtrl, GWLP_USERDATA);
 							}
 							else
 							{
