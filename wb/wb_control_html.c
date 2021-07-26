@@ -299,13 +299,13 @@ BOOL EmbedBrowserObject(PWBOBJ pwbo)
 
 		*((IOleObject **)ptr) = browserObject;
 
-		// The original code uses SetWindowLongPtr/GetWindowLongPtr with GWL_USERDATA to store the
+		// The original code uses SetWindowLongPtr/GetWindowLongPtr with GWPL_USERDATA to store the
 		// browser object pointer. we use pwbo->lparams[0] because the former is already used
 		// to store the WinBinder object.
 
 		pwbo->lparams[0] = (LONG)ptr;
 
-		//		SetWindowLongPtr(hwnd, GWL_USERDATA, (LONG)ptr);
+		//		SetWindowLongPtr(hwnd, GWPL_USERDATA, (LONG)ptr);
 
 		browserObject->lpVtbl->SetHostNames(browserObject, L"My Host Name", 0);
 
@@ -350,7 +350,7 @@ BOOL DisplayHTMLString(PWBOBJ pwbo, LPCTSTR string)
 		return FALSE;
 
 	browserObject = *((IOleObject **)pwbo->lparams[0]);
-	//	browserObject = *((IOleObject **)GetWindowLongPtr(hwnd, GWL_USERDATA));
+	//	browserObject = *((IOleObject **)GetWindowLongPtr(hwnd, GWPL_USERDATA));
 	bstr = 0;
 
 	if (!browserObject->lpVtbl->QueryInterface(browserObject, (IID *)&IID_IWebBrowser2, (void **)&webBrowser2))
@@ -445,7 +445,7 @@ BOOL DisplayHTMLPage(PWBOBJ pwbo, LPCTSTR pszWebPageName)
 
 	// Normal page
 
-	//	browserObject = *((IOleObject **)GetWindowLongPtr(hwnd, GWL_USERDATA));
+	//	browserObject = *((IOleObject **)GetWindowLongPtr(hwnd, GWPL_USERDATA));
 	browserObject = *((IOleObject **)pwbo->lparams[0]);
 
 	if (!browserObject)
@@ -966,7 +966,7 @@ static BOOL DoPageAction(PWBOBJ pwbo, DWORD action, PVOID pvResult)
 	if (!pwbo)
 		return FALSE;
 
-	// Retrieve the browser object's pointer we stored in our window's GWL_USERDATA when
+	// Retrieve the browser object's pointer we stored in our window's GWPL_USERDATA when
 	// we initially attached the browser object to this window.
 
 	browserObject = *((IOleObject **)pwbo->lparams[0]);
@@ -1034,14 +1034,14 @@ static BOOL UnEmbedBrowserObject(HWND hwnd)
 
 	pwbo = wbGetWBObj(hwnd);
 
-	//	if(NULL != (browserHandle = (IOleObject **)GetWindowLongPtr(hwnd, GWL_USERDATA))) {
+	//	if(NULL != (browserHandle = (IOleObject **)GetWindowLongPtr(hwnd, GWPL_USERDATA))) {
 	browserHandle = ((IOleObject **)pwbo->lparams[0]);
 	if (browserHandle)
 	{
 		browserObject = *browserHandle;
 		browserObject->lpVtbl->Close(browserObject, OLECLOSE_NOSAVE);
 		browserObject->lpVtbl->Release(browserObject);
-		//		SetWindowLongPtr(hwnd, GWL_USERDATA, 0);
+		//		SetWindowLongPtr(hwnd, GWPL_USERDATA, 0);
 		pwbo->lparams[0] = 0;
 	}
 	return TRUE;
@@ -1062,7 +1062,7 @@ static void ResizeBrowser(HWND hwnd, DWORD width, DWORD height)
 		return;
 
 	browserObject = *((IOleObject **)pwbo->lparams[0]);
-	//	browserObject = *((IOleObject **)GetWindowLongPtr(hwnd, GWL_USERDATA));
+	//	browserObject = *((IOleObject **)GetWindowLongPtr(hwnd, GWPL_USERDATA));
 
 	if (!browserObject->lpVtbl->QueryInterface(browserObject, (IID *)&IID_IWebBrowser2, (void **)&webBrowser2))
 	{
