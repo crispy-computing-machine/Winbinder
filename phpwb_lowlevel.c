@@ -174,7 +174,7 @@ ZEND_FUNCTION(wb_load_library)
 {
 	char *lib;
 	int lib_len;
-	LONG_PTR hlib;
+	HMODULE hlib;
 
 	// low level functions disabled?
 	if (INI_INT("winbinder.low_level_functions") == 0)
@@ -188,7 +188,7 @@ ZEND_FUNCTION(wb_load_library)
 							  "s", &lib, &lib_len) == FAILURE)
 		return;
 
-	hlib = (LONG_PTR)wbLoadLibrary(Utf82WideChar(lib, lib_len));
+	hlib = (HMODULE)wbLoadLibrary(Utf82WideChar(lib, lib_len));
 	//hlib = (LONG)wbLoadLibrary(lib);
 
 	if (hlib)
