@@ -76,7 +76,7 @@ ZEND_FUNCTION(wbtemp_create_control)
 	}
 
 	// Convert line breaks for the caption and tooltip
-	RETURN_LONG((LONG)wbCreateControl((PWBOBJ)pwboparent, wbclass, wcsCaption, wcsTooltip, x, y, w, h, id, style, param, ntab));
+	RETURN_LONG((LONG_PTR)wbCreateControl((PWBOBJ)pwboparent, wbclass, wcsCaption, wcsTooltip, x, y, w, h, id, style, param, ntab));
 }
 
 ZEND_FUNCTION(wb_destroy_control)
