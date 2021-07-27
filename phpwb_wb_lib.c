@@ -134,7 +134,7 @@ UINT wbCallUserFunction(LPCTSTR pszFunctionName, LPDWORD pszObject, PWBOBJ pwboP
 	//}
 
 	// PWBOBJ pointer
-	&parms[0] = (LONG_PTR)pwboParent;
+	(LONG_PTR)&parms[0] = (LONG_PTR)pwboParent;
 
 	// id
 	ZVAL_LONG(&parms[1], (LONG)id);
