@@ -112,7 +112,7 @@ UINT wbCallUserFunction(LPCTSTR pszFunctionName, LPDWORD pszObject, PWBOBJ pwboP
 			wbError(TEXT("wbCallUserFunction"), MB_ICONWARNING, TEXT("No callback function assigned to window '%s'"), title);
 		}
 		else
-			wbError(TEXT("wbCallUserFunction"), MB_ICONWARNING, TEXT("No callback function assigned to window #%ld"), (LONG)pwboParent);
+			wbError(TEXT("wbCallUserFunction"), MB_ICONWARNING, TEXT("No callback function assigned to window #%ld"), (LONG_PTR)pwboParent);
 		return FALSE;
 	}
 
@@ -140,7 +140,7 @@ UINT wbCallUserFunction(LPCTSTR pszFunctionName, LPDWORD pszObject, PWBOBJ pwboP
 	ZVAL_LONG(&parms[1], (LONG)id);
 
 	// control handle
-	ZVAL_LONG(&parms[2], (LONG)pctrl);
+	ZVAL_LONG(&parms[2], (LONG_PTR)pctrl);
 
 	// lparam1
 	ZVAL_LONG(&parms[3], (LONG)lParam1);

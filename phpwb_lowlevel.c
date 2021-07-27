@@ -148,26 +148,26 @@ ZEND_FUNCTION(wb_get_address)
 	zend_uchar sourcetype = Z_TYPE_P(source);
 	if (sourcetype == IS_LONG)
 	{
-		RETURN_LONG((LONG)(void *)&Z_LVAL_P(source));
+		RETURN_LONG((LONG_PTR)(void *)&Z_LVAL_P(source));
 	}
 	else if (sourcetype == IS_TRUE)
 	{
-		RETURN_LONG((LONG)(void *)&Z_LVAL_P(source));
+		RETURN_LONG((LONG_PTR)(void *)&Z_LVAL_P(source));
 	}
 	else if (sourcetype == IS_FALSE)
 	{
-		RETURN_LONG((LONG)(void *)&Z_LVAL_P(source));
+		RETURN_LONG((LONG_PTR)(void *)&Z_LVAL_P(source));
 	}
 	else if (sourcetype == IS_DOUBLE)
 	{
-		RETURN_LONG((LONG)(void *)&Z_DVAL_P(source));
+		RETURN_LONG((LONG_PTR)(void *)&Z_DVAL_P(source));
 	}
 	else if (sourcetype == IS_STRING)
 	{
-		RETURN_LONG((LONG)(void *)Z_STRVAL_P(source));
+		RETURN_LONG((LONG_PTR)(void *)Z_STRVAL_P(source));
 	}
 	else
-		RETURN_LONG((LONG)(void *)source)
+		RETURN_LONG((LONG_PTR)(void *)source)
 }
 
 ZEND_FUNCTION(wb_load_library)
@@ -188,7 +188,7 @@ ZEND_FUNCTION(wb_load_library)
 							  "s", &lib, &lib_len) == FAILURE)
 		return;
 
-	hlib = (LONG)wbLoadLibrary(Utf82WideChar(lib, lib_len));
+	hlib = (LONG_PTR)wbLoadLibrary(Utf82WideChar(lib, lib_len));
 	//hlib = (LONG)wbLoadLibrary(lib);
 
 	if (hlib)
@@ -230,7 +230,7 @@ ZEND_FUNCTION(wb_get_function_address)
 {
 	char *fun;
 	int fun_len;
-	zend_long addr, hlib = (LONG)NULL;
+	zend_long addr, hlib = (LONG_PTR)NULL;
 
 	// low level functions disabled?
 	if (INI_INT("winbinder.low_level_functions") == 0)
@@ -251,7 +251,7 @@ ZEND_FUNCTION(wb_get_function_address)
 		RETURN_NULL();
 	}
 
-	addr = (LONG)wbGetLibraryFunction((HMODULE)hlib, fun);
+	addr = (LONG_PTR)wbGetLibraryFunction((HMODULE)hlib, fun);
 
 	if (addr)
 		RETURN_LONG(addr)
@@ -264,8 +264,8 @@ ZEND_FUNCTION(wb_get_function_address)
 
 ZEND_FUNCTION(wb_call_function)
 {
-	zend_long addr;
-	LONG retval = 0;
+	LONG_PTR addr;
+	LONG_PTR retval = 0;
 	DWORD *param = NULL;
 	zval *array = NULL, *entry = NULL;
 	int i, nelem = 0;
@@ -321,15 +321,15 @@ ZEND_FUNCTION(wb_call_function)
 				case IS_ARRAY: // Invalid types
 				case IS_OBJECT:
 				case IS_RESOURCE:
-					param[i] = (LONG)NULL;
+					param[i] = (LONG_PTR)NULL;
 					break;
 
 				case IS_NULL:
-					param[i] = (LONG)NULL;
+					param[i] = (LONG_PTR)NULL;
 					break;
 
 				case IS_STRING:
-					param[i] = (LONG)Z_STRVAL_P(entry);
+					param[i] = (LONG_PTR)Z_STRVAL_P(entry);
 					break;
 
 				case IS_DOUBLE:

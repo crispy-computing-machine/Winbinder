@@ -619,7 +619,7 @@ ZEND_FUNCTION(wb_get_clipboard)
         char * buffer = (char*)GlobalLock( hData );
         GlobalUnlock( hData );
         CloseClipboard();
-        RETURN_STRING(buffer, TRUE);
+        RETURN_STRING(buffer);
     }
     RETURN_NULL();
 }

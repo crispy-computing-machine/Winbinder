@@ -115,7 +115,7 @@ ZEND_FUNCTION(wbtemp_create_menu)
 
 	// Create menu and attach it to window
 
-	l = (LONG)wbCreateMenu((PWBOBJ)pwboParent, pitem, nelem);
+	l = (LONG_PTR)wbCreateMenu((PWBOBJ)pwboParent, pitem, nelem);
 
 	if (pitem)
 		efree(pitem);
