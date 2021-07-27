@@ -64,12 +64,12 @@ ZEND_FUNCTION(wb_peek)
 	if (bytes == 0)
 	{ // Want a zero-terminated string?
 		if (!IsBadStringPtr(ptr, 32767))
-			RETURN_STRINGL(ptr, strlen(ptr), TRUE)
+			RETURN_STRINGL(ptr, strlen(ptr))
 	}
 	else
 	{ // No, want a memory dump
 		if (!IsBadReadPtr(ptr, bytes))
-			RETURN_STRINGL(ptr, bytes, TRUE)
+			RETURN_STRINGL(ptr, bytes)
 	}
 	wbError(TEXT("wb_peek"), MB_ICONWARNING, TEXT("Cannot read from location %d"), (int)ptr);
 	RETURN_NULL();
@@ -174,7 +174,7 @@ ZEND_FUNCTION(wb_load_library)
 {
 	char *lib;
 	int lib_len;
-	HMODULE hlib;
+	LONG_PTR hlib;
 
 	// low level functions disabled?
 	if (INI_INT("winbinder.low_level_functions") == 0)
@@ -195,7 +195,7 @@ ZEND_FUNCTION(wb_load_library)
 		RETURN_LONG(hlib)
 	else
 	{
-		wbError(TEXT("wb_load_library"), MB_ICONWARNING, TEXT("Unable to locate library %s"), lib);
+		wbError(TEXT("wb_load_library"), MB_ICONWARNING, TEXT("Unable to locate library %s"), Utf82WideChar(lib, lib_len));
 		RETURN_NULL();
 	}
 }
