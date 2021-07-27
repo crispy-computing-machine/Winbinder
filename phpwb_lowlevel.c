@@ -195,7 +195,7 @@ ZEND_FUNCTION(wb_load_library)
 		RETURN_LONG(lib);
 	} else
 	{
-		wbError(TEXT("wb_load_library"), MB_ICONWARNING, TEXT("Unable to locate library %s"), Utf82WideChar(lib, lib_len));
+		wbError(TEXT("wb_load_library"), MB_ICONWARNING, TEXT("Unable to locate library %s %s"), Utf82WideChar(lib, lib_len), hlib);
 		RETURN_NULL();
 	}
 }
