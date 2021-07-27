@@ -230,7 +230,7 @@ ZEND_FUNCTION(wb_get_function_address)
 {
 	char *fun;
 	int fun_len;
-	zend_long addr, hlib = (LONG_PTR)NULL;
+	LONG_PTR addr, hlib = (LONG_PTR)NULL;
 
 	// low level functions disabled?
 	if (INI_INT("winbinder.low_level_functions") == 0)
