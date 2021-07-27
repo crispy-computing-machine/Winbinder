@@ -22,7 +22,7 @@ ZEND_FUNCTION(wbtemp_create_menu)
 	HashTable *target_hash;
 	zend_long pwboParent;
 	PWBITEM *pitem = NULL;
-	LONG l;
+	LONG_PTR l;
 	char *str_accel = NULL;
 	ACCEL accel[MAX_ACCELS];
 	DWORD dwacc;
