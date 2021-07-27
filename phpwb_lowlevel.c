@@ -251,13 +251,13 @@ ZEND_FUNCTION(wb_get_function_address)
 		RETURN_NULL();
 	}
 
-	addr = (LONG_PTR)wbGetLibraryFunction((HMODULE)hlib, fun);
+	addr = (LONG_PTR)wbGetLibraryFunction((HMODULE)hlib, Utf82WideChar(fun, fun_len));
 
 	if (addr)
 		RETURN_LONG(addr)
 	else
 	{
-		wbError(TEXT("wb_get_function_address"), MB_ICONWARNING, TEXT("Unable to locate function %s() in library"), fun);
+		wbError(TEXT("wb_get_function_address"), MB_ICONWARNING, TEXT("Unable to locate function %s() in library"), Utf82WideChar(fun, fun_len));
 		RETURN_NULL();
 	}
 }
