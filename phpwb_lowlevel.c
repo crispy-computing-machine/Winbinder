@@ -192,7 +192,7 @@ ZEND_FUNCTION(wb_load_library)
 	//hlib = (LONG)wbLoadLibrary(lib);
 
 	if (hlib)
-		RETURN_LONG(LONG_PTR)hlib)
+		RETURN_LONG((LONG_PTR)hlib);
 	else
 	{
 		wbError(TEXT("wb_load_library"), MB_ICONWARNING, TEXT("Unable to locate library %s"), Utf82WideChar(lib, lib_len));
