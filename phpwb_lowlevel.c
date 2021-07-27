@@ -257,7 +257,7 @@ ZEND_FUNCTION(wb_get_function_address)
 		RETURN_LONG(addr)
 	else
 	{
-		wbError(TEXT("wb_get_function_address"), MB_ICONWARNING, TEXT("Unable to locate function %s() in library"), Utf82WideChar(fun, fun_len));
+		wbError(TEXT("wb_get_function_address"), MB_ICONWARNING, TEXT("Unable to locate function %s(%s) in library"), Utf82WideChar(fun, fun_len), addr);
 		RETURN_NULL();
 	}
 }
