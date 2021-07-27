@@ -174,7 +174,7 @@ ZEND_FUNCTION(wb_load_library)
 {
 	char *lib;
 	int lib_len;
-	LONG hlib;
+	LONG_PTR hlib;
 
 	// low level functions disabled?
 	if (INI_INT("winbinder.low_level_functions") == 0)
