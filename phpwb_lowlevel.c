@@ -188,11 +188,11 @@ ZEND_FUNCTION(wb_load_library)
 							  "s", &lib, &lib_len) == FAILURE)
 		return;
 
-	hlib = (HMODULE)wbLoadLibrary(Utf82WideChar(lib, lib_len));
+	hlib = (LONG_PTR)wbLoadLibrary(Utf82WideChar(lib, lib_len));
 	//hlib = (LONG)wbLoadLibrary(lib);
 
 	if (hlib) {
-		RETURN_LONG((LONG_PTR)hlib);
+		RETURN_LONG(lib);
 	} else
 	{
 		wbError(TEXT("wb_load_library"), MB_ICONWARNING, TEXT("Unable to locate library %s"), Utf82WideChar(lib, lib_len));
