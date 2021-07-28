@@ -251,7 +251,7 @@ ZEND_FUNCTION(wb_get_function_address)
 		RETURN_NULL();
 	}
 
-	addr = (LONG_PTR)wbGetLibraryFunction((HMODULE)hlib, Utf82WideChar(fun, fun_len));
+	addr = (FARPROC)wbGetLibraryFunction((HMODULE)hlib, fun);
 
 	if (addr)
 		RETURN_LONG(addr)
