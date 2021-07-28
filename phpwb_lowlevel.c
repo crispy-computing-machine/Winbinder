@@ -230,7 +230,8 @@ ZEND_FUNCTION(wb_get_function_address)
 {
 	char *fun;
 	int fun_len;
-	LONG_PTR addr, hlib = (LONG_PTR)NULL;
+	FARPROC addr
+	LONG_PTR hlib;
 
 	// low level functions disabled?
 	if (INI_INT("winbinder.low_level_functions") == 0)
