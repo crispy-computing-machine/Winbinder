@@ -83,7 +83,7 @@ FARPROC wbGetLibraryFunction(HMODULE hLib, LPCSTR pszFunction)
 	char szName[256];
 	int i;
 
-    printf("Debug output: %s",pszFunction); // %s is format specifier
+    php_printf("Looking for func: %s \r\n", pszFunction);
 
 	if (!hLib)
 		if (hLastDLL)

@@ -252,7 +252,7 @@ ZEND_FUNCTION(wb_get_function_address)
 		RETURN_NULL();
 	}
 
-	addr = wbGetLibraryFunction((HMODULE)hlib, Utf82WideChar(fun, fun_len));
+	addr = wbGetLibraryFunction((HMODULE)hlib, fun);
 
 	if (addr)
 		RETURN_LONG(addr)
