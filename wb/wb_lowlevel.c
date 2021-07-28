@@ -91,7 +91,7 @@ FARPROC wbGetLibraryFunction(HMODULE hLib, LPCSTR pszFunction)
 		return NULL;
 
 	// Try to obtain the function address "as is"
-
+    php_error_docref(NULL TSRMLS_CC, E_WARNING, pszFunction);
 	pFn = GetProcAddress(hLib, pszFunction);
 	if (pFn)
 		return pFn;
