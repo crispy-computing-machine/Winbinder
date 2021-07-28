@@ -440,7 +440,7 @@ ZEND_FUNCTION(wb_get_item_list)
 		plist = emalloc(nctrls * sizeof(PWBOBJ));
 		wbGetControlList((PWBOBJ)pwboparent, plist, nctrls);
 		for (i = 0; i < nctrls; i++)
-			add_next_index_long(return_value, (LONG)plist[i]);
+			add_next_index_long(return_value, (LONGLONG)plist[i]);
 		efree(plist);
 	}
 }

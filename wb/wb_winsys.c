@@ -384,7 +384,7 @@ BOOL wbSetCursor(PWBOBJ pwbo, LPCTSTR pszCursor, HANDLE handle)
 		else // Cursor name
 			hCursor = GetSysCursor(pszCursor);
 
-		M_nMouseCursor = (LONG)hCursor;
+		M_nMouseCursor = (LONGLONG)hCursor;
 		return (hCursor != 0);
 	}
 }
@@ -1100,11 +1100,11 @@ BOOL wbWriteRegistryKey(LPCTSTR pszKey, LPTSTR pszSubKey, LPTSTR pszEntry, LPCTS
 
   To get the value, must check the value of pbString:
 
-  If FALSE, the value is a LONG returned by the function;
+  If FALSE, the value is a LONGLONG returned by the function;
   If TRUE, the value is contained in pszString.
 */
 
-LONG wbGetSystemInfo(LPCTSTR pszInfo, BOOL *pbIsString, LPTSTR pszString, UINT uLen)
+LONGLONG wbGetSystemInfo(LPCTSTR pszInfo, BOOL *pbIsString, LPTSTR pszString, UINT uLen)
 {
 	*pbIsString = FALSE;
 
@@ -1124,7 +1124,7 @@ LONG wbGetSystemInfo(LPCTSTR pszInfo, BOOL *pbIsString, LPTSTR pszString, UINT u
 	{
 
 		*pbIsString = FALSE;
-		return (LONG)hAppInstance;
+		return (LONGLONG)hAppInstance;
 	}
 	else if (!lstrcmpi(pszInfo, L"ospath"))
 	{
@@ -1605,7 +1605,7 @@ static BOOL _GetOSVersionString(LPTSTR pszString)
 			HKEY hKey;
 			TCHAR szProductType[80];
 			DWORD dwBufLen = 80;
-			LONG lRet;
+			LONGLONG lRet;
 
 			lRet = RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"SYSTEM\\CurrentControlSet\\Control\\ProductOptions", 0, KEY_QUERY_VALUE, &hKey);
 			if (lRet != ERROR_SUCCESS)
@@ -1632,7 +1632,7 @@ static BOOL _GetOSVersionString(LPTSTR pszString)
 		if (osvi.dwMajorVersion == 4 && lstrcmpi(osvi.szCSDVersion, L"Service Pack 6") == 0)
 		{
 			HKEY hKey;
-			LONG lRet;
+			LONGLONG lRet;
 
 			// Test for SP6 versus SP6a.
 			lRet = RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Hotfix\\Q246009", 0, KEY_QUERY_VALUE, &hKey);

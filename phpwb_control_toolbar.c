@@ -21,7 +21,7 @@ ZEND_FUNCTION(wbtemp_create_toolbar)
 	zval *zarray = NULL, *entry = NULL;
 	HashTable *target_hash;
 	HANDLE hImage = NULL;
-	LONG l;
+	LONGLONG l;
 	zend_long pwboParent, width = 0, height = 0;
 	char *s = "";
 	PWBITEM *pitem;
@@ -107,7 +107,7 @@ ZEND_FUNCTION(wbtemp_create_toolbar)
 
 	// Create toolbar and attach it to window
 
-	l = (LONG)wbCreateToolbar((PWBOBJ)pwboParent, pitem, nelem, width, height, hImage);
+	l = (LONGLONG)wbCreateToolbar((PWBOBJ)pwboParent, pitem, nelem, width, height, hImage);
 
 	if (pitem)
 		efree(pitem);

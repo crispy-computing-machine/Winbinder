@@ -137,19 +137,19 @@ UINT wbCallUserFunction(LPCTSTR pszFunctionName, LPDWORD pszObject, PWBOBJ pwboP
 	ZVAL_LONG(&parms[0],(LONG_PTR)pwboParent);
 
 	// id
-	ZVAL_LONG(&parms[1], (LONG)id);
+	ZVAL_LONG(&parms[1], (LONGLONG)id);
 
 	// control handle
 	ZVAL_LONG(&parms[2], (LONG_PTR)pctrl);
 
 	// lparam1
-	ZVAL_LONG(&parms[3], (LONG)lParam1);
+	ZVAL_LONG(&parms[3], (LONGLONG)lParam1);
 
 	// lparam2
-	ZVAL_LONG(&parms[4], (LONG)lParam2);
+	ZVAL_LONG(&parms[4], (LONGLONG)lParam2);
 
 	// lparam3
-	ZVAL_LONG(&parms[5], (LONG)lParam3);
+	ZVAL_LONG(&parms[5], (LONGLONG)lParam3);
 
 	// Call the user function
 	bRet = call_user_function_ex(

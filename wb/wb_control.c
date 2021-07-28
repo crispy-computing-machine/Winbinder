@@ -102,7 +102,7 @@ PWBOBJ wbCreateControl(PWBOBJ pwboParent, UINT uWinBinderClass, LPCTSTR pszSourc
 	pwbo->pszCallBackFn = NULL;
 	pwbo->pszCallBackObj = NULL;
 	pwbo->lparam = lParam;
-	ZeroMemory(pwbo->lparams, sizeof(LONG) * 8);
+	ZeroMemory(pwbo->lparams, sizeof(LONGLONG) * 8);
 	ZeroMemory(&pwbo->rcTitle, sizeof(RECT) + 2 * sizeof(AREA));
 	pwbo->pbuffer = NULL;
 
@@ -448,7 +448,7 @@ PWBOBJ wbCreateControl(PWBOBJ pwboParent, UINT uWinBinderClass, LPCTSTR pszSourc
 
 		SendMessage(pwbo->hwnd, WM_SETFONT, (WPARAM)hIconFont, 0);
 		//			// Subclasses tab control to process WM_COMMAND
-		//			lpfnTabProcOld = (WNDPROC)SetWindowLongPtr(pwbo->hwnd, GWLP_WNDPROC, (LONG)TabProc);
+		//			lpfnTabProcOld = (WNDPROC)SetWindowLongPtr(pwbo->hwnd, GWLP_WNDPROC, (LONGLONG)TabProc);
 		CreateToolTip(pwbo, pszTooltip);
 		wbSetTabControlText(pwbo, pszCaption);
 
@@ -912,7 +912,7 @@ UINT wbGetTextLength(PWBOBJ pwbo, int nIndex)
 	}
 }
 
-DWORD CALLBACK EditStreamOutCallback(DWORD_PTR dwCookie, LPBYTE pbBuff, LONG cb, LONG *pcb)
+DWORD CALLBACK EditStreamOutCallback(DWORD_PTR dwCookie, LPBYTE pbBuff, LONGLONG cb, LONGLONG *pcb)
 {
 	char **rtf = (char **)dwCookie;
 	*rtf = wbMalloc(cb + 1);
@@ -1441,7 +1441,7 @@ BOOL wbSetValue(PWBOBJ pwbo, DWORD dwValue)
 	return TRUE;
 }
 
-BOOL wbSetRange(PWBOBJ pwbo, LONG lMin, LONG lMax)
+BOOL wbSetRange(PWBOBJ pwbo, LONGLONG lMin, LONGLONG lMax)
 {
 	if (!wbIsWBObj(pwbo, TRUE)) // Is it a valid control?
 		return FALSE;
@@ -1552,7 +1552,7 @@ DWORD wbGetValue(PWBOBJ pwbo)
 BOOL wbSetImage(PWBOBJ pwbo, HANDLE hImage, COLORREF clTransp, LPARAM lParam)
 {
 	BOOL bRet = TRUE;
-	LONG lStyle;
+	LONGLONG lStyle;
 
 	if (!wbIsWBObj(pwbo, TRUE)) // Is it a valid control?
 		return FALSE;
@@ -1878,7 +1878,7 @@ HWND CreateToolTip(PWBOBJ pwbo, LPCTSTR pszTooltip)
 	if (!SendMessage(hwndTT, TTM_ADDTOOL, 0, (LPARAM)&ti))
 		return NULL;
 
-	M_ToolTipWnd = (LONG)hwndTT;
+	M_ToolTipWnd = (LONGLONG)hwndTT;
 	return hwndTT;
 }
 

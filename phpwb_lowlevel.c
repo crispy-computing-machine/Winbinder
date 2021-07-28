@@ -189,7 +189,7 @@ ZEND_FUNCTION(wb_load_library)
 		return;
 
 	hlib = (LONG_PTR)wbLoadLibrary(Utf82WideChar(lib, lib_len));
-	//hlib = (LONG)wbLoadLibrary(lib);
+	//hlib = (LONGLONG)wbLoadLibrary(lib);
 
 	if (hlib) {
 		RETURN_LONG(lib);

@@ -196,21 +196,21 @@ ZEND_FUNCTION(wb_get_parent)
 	{
 		if (item)
 		{
-			RETURN_LONG((LONG)wbGetTreeViewItemParent((PWBOBJ)pwbo, (HTREEITEM)item));
+			RETURN_LONG((LONGLONG)wbGetTreeViewItemParent((PWBOBJ)pwbo, (HTREEITEM)item));
 		}
 		else
 		{
-			RETURN_LONG((LONG)((PWBOBJ)pwbo)->parent);
+			RETURN_LONG((LONGLONG)((PWBOBJ)pwbo)->parent);
 		}
 	}
 	else
 	{
-		RETURN_LONG((LONG)((PWBOBJ)pwbo)->parent);
+		RETURN_LONG((LONGLONG)((PWBOBJ)pwbo)->parent);
 	}
 }
 
 ZEND_FUNCTION(wb_get_focus){
-	RETURN_LONG((LONG)wbGetFocus())}
+	RETURN_LONG((LONGLONG)wbGetFocus())}
 
 ZEND_FUNCTION(wb_set_style)
 {
@@ -390,7 +390,7 @@ ZEND_FUNCTION(wb_get_selected)
 	else if (((PWBOBJ)pwbo)->uClass == TreeView)
 	{ // TreeView: returns the handle of the selected node
 
-		RETURN_LONG((LONG)wbGetTreeViewItemSelected((PWBOBJ)pwbo));
+		RETURN_LONG((LONGLONG)wbGetTreeViewItemSelected((PWBOBJ)pwbo));
 	}
 	else
 
@@ -541,7 +541,7 @@ ZEND_FUNCTION(wb_get_control)
 	if (!wbIsWBObj((void *)pwboparent, TRUE))
 		RETURN_NULL()
 	else
-		RETURN_LONG((LONG)wbGetControl((PWBOBJ)pwboparent, id));
+		RETURN_LONG((LONGLONG)wbGetControl((PWBOBJ)pwboparent, id));
 }
 
 ZEND_FUNCTION(wb_set_enabled)
@@ -787,7 +787,7 @@ ZEND_FUNCTION(wbtemp_create_statusbar_items)
 		int nParts = 0;
 		int aWidths[255];
 		LPTSTR pszCaption;
-		LONG nWidth;
+		LONGLONG nWidth;
 
 		// Count array elements
 
@@ -907,7 +907,7 @@ ZEND_FUNCTION(wbtemp_set_text)
 /*
 ZEND_FUNCTION(wbtemp_set_text)
 {
-	LONG pwbo, item = 0;
+	LONGLONG pwbo, item = 0;
 	BOOL ret = TRUE;
     zval *zcaption;
 	char *caption = "";

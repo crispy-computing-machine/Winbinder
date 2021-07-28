@@ -20,7 +20,7 @@
 
 static DWORD FileTimeToUnixTime(FILETIME *filetime);
 static FILETIME UnixTimeToFileTime(DWORD dwTime);
-static LONG GetCorrectUtcUnixTime(void);
+static LONGLONG GetCorrectUtcUnixTime(void);
 
 //----------------------------------------------------------- EXPORTED FUNCTIONS
 
@@ -70,11 +70,11 @@ structure to correct UnixTime to UTC.
 
 */
 
-static LONG GetCorrectUtcUnixTime(void)
+static LONGLONG GetCorrectUtcUnixTime(void)
 {
 	DWORD InfoTimeResult;
 	LPTIME_ZONE_INFORMATION ptrTimeZoneInfo;
-	LONG lBias;
+	LONGLONG lBias;
 
 	ptrTimeZoneInfo = wbMalloc(sizeof(TIME_ZONE_INFORMATION));
 	InfoTimeResult = GetTimeZoneInformation(ptrTimeZoneInfo);

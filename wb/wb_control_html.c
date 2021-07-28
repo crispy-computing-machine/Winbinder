@@ -303,9 +303,9 @@ BOOL EmbedBrowserObject(PWBOBJ pwbo)
 		// browser object pointer. we use pwbo->lparams[0] because the former is already used
 		// to store the WinBinder object.
 
-		pwbo->lparams[0] = (LONG)ptr;
+		pwbo->lparams[0] = (LONGLONG)ptr;
 
-		//		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG)ptr);
+		//		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONGLONG)ptr);
 
 		browserObject->lpVtbl->SetHostNames(browserObject, L"My Host Name", 0);
 
