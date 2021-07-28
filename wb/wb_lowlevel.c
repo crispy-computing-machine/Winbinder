@@ -83,6 +83,8 @@ FARPROC wbGetLibraryFunction(HMODULE hLib, LPCSTR pszFunction)
 	char szName[256];
 	int i;
 
+    printf("Debug output: %s",pszFunction); // %s is format specifier
+
 	if (!hLib)
 		if (hLastDLL)
 			hLib = hLastDLL;
@@ -91,7 +93,6 @@ FARPROC wbGetLibraryFunction(HMODULE hLib, LPCSTR pszFunction)
 		return NULL;
 
 	// Try to obtain the function address "as is"
-    printf("%s",pszFunction); // %s is format specifier
 	pFn = GetProcAddress(hLib, pszFunction);
 	if (pFn)
 		return pFn;
