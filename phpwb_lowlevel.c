@@ -230,7 +230,7 @@ ZEND_FUNCTION(wb_get_function_address)
 {
 	char *fun;
 	int fun_len;
-	FARPROC addr;
+	LONGLONG addr;
 	FARPROC hlib;
 
 	// low level functions disabled?
@@ -252,7 +252,7 @@ ZEND_FUNCTION(wb_get_function_address)
 		RETURN_NULL();
 	}
 
-	addr = (FARPROC)wbGetLibraryFunction((HMODULE)hlib, fun);
+	addr = wbGetLibraryFunction((HMODULE)hlib, fun);
 
 	if (addr)
 		RETURN_LONG(addr)
